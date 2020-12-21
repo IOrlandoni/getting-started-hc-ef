@@ -1,6 +1,8 @@
+using EFGetStarted;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -16,6 +18,15 @@ namespace ASPNetCoreWebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Register our DbContextPool
+            services.AddPooledDbContextFactory<BloggingContext>(b => b
+                //DbContextOptions, extracted from our
+                .UseSqlite("Data Source=blogging.db")
+            );
+
+            // Build our schema and register it.
+            services
+                .AddGraphQLServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +45,9 @@ namespace ASPNetCoreWebApp
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+
+                // We map our GraphQL endpoint
+                endpoints.MapGraphQL();
             });
         }
     }
