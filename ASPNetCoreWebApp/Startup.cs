@@ -1,3 +1,4 @@
+using ASPNetCoreWebApp.Schema;
 using EFGetStarted;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,10 @@ namespace ASPNetCoreWebApp
 
             // Build our schema and register it.
             services
-                .AddGraphQLServer();
+                .AddGraphQLServer()
+                .AddQueryType<Queries>()
+                .AddFiltering()
+                .AddSorting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
