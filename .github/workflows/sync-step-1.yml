@@ -22,4 +22,4 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_METHOD: "merge"
           MERGE_LABELS: ""
-          PULL_REQUEST: "${{ steps.propen.outputs.PULL_REQUEST_URL }}"
+          PULL_REQUEST: "${{ steps.propen.outputs.PULL_REQUEST_NUMBER }}"
