@@ -1,0 +1,18 @@
+name: Sync main/step1 branches
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_sync_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dequelabs/action-sync-branches@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          head: 'main'
+          base: 'steps/1-model-tweaks'
+          pr-title: 'Merge main into step1'
+          pr-labels: automerge
