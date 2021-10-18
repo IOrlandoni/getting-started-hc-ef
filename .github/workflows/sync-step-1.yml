@@ -16,10 +16,17 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "main"
           TO_BRANCH: "steps/1-model-tweaks"
-      - name: PRMerge
+      - name: prmerge
         uses: "pascalgn/automerge-action@v0.14.3"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_METHOD: "merge"
           MERGE_LABELS: ""
           PULL_REQUEST: "${{ steps.propen.outputs.PULL_REQUEST_NUMBER }}"
+      - name: prmerge
+        uses: "pascalgn/automerge-action@v0.14.3"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_METHOD: "merge"
+          MERGE_LABELS: ""
+          PULL_REQUEST: "${{ PULL_REQUEST_NUMBER }}"
