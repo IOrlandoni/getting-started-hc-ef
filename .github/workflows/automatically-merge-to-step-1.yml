@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'steps/1-model-tweaks'
+          token: ${{ secrets.PAT }}
+          persist-credentials: false
+      - uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ secrets.PAT }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'steps/1-model-tweaks'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
