@@ -15,6 +15,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: ${{ github.ref }}
           base: "steps/1-model-tweaks"
+          title: "Auto sync main to step1"
       - name: prmerge
         uses: juliangruber/merge-pull-request-action@v1
         with:
