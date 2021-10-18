@@ -9,17 +9,17 @@ jobs:
   create_sync_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - name: PRCreate
-        uses: dequelabs/action-sync-branches@v1
+      - name: propen
+        id: pull
+        uses: tretuna/sync-branches@1.4.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          head: 'main'
-          base: 'steps/1-model-tweaks'
-          pr-title: 'Merge main into step1'
-          pr-labels: automerge
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "main"
+          TO_BRANCH: "steps/1-model-tweaks"
       - name: PRMerge
         uses: "pascalgn/automerge-action@v0.14.3"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_METHOD: "merge"
-          MERGE_LABELS: "automerge"
+          MERGE_LABELS: ""
+          PULL_REQUEST: "${{ steps.propen.outputs.PULL_REQUEST_URL }}"
