@@ -20,5 +20,5 @@ jobs:
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          number:  ${{ steps.propen.outputs.number }}
+          number:  ${{ steps.create-pull-request.outputs.number }}
           method: merge
