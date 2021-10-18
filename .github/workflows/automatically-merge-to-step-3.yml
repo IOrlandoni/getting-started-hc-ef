@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - "steps/2-installing-hotchocolate"
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'steps/3-service-configurations'
+          token: ${{ secrets.PAT }}
+          persist-credentials: false
+      - uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ secrets.PAT }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'steps/3-service-configurations'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
