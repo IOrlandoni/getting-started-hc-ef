@@ -3,7 +3,7 @@ name: Sync main/step1 branches
 on:
   push:
     branches:
-      - main
+      - steps/1-model-tweaks
 
 jobs:
   pull_request:
@@ -15,8 +15,8 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: ${{ github.ref }}
-          base: "steps/1-model-tweaks"
-          title: "Mergin main into step1"
+          base: "steps/2-installing-hotchocolate"
+          title: "Mergin step1 into step2"
       - name: Merge pull request
         uses: juliangruber/merge-pull-request-action@v1
         with:
