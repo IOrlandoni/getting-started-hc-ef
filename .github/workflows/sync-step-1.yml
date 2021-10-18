@@ -13,6 +13,6 @@ jobs:
         uses: thomaseizinger/create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          head: "steps/1-model-tweaks"
-          base: ${{ github.ref }}
+          head: ${{ github.ref }}
+          base: "steps/1-model-tweaks"
           title: "An automatically created PR!"
