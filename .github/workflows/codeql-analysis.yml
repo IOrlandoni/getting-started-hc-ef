@@ -2,10 +2,10 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 'steps/1-model-tweaks', 'steps/2-installing-hotchocolate', 'steps/3-service-configurations', 'steps/4-adding-queries' ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ main ]
+    branches: [ main, 'steps/1-model-tweaks', 'steps/2-installing-hotchocolate', 'steps/3-service-configurations', 'steps/4-adding-queries' ]
   schedule:
     - cron: '29 9 * * 5'
 
