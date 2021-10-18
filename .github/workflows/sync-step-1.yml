@@ -9,10 +9,10 @@ jobs:
   create_sync_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
+      - name: Create pull request
+        uses: thomaseizinger/create-pull-request@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: "steps/1-model-tweaks"
-          branch: "main"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          head: "steps/1-model-tweaks"
+          base: ${{ github.ref }}
+          title: "An automatically created PR!"
