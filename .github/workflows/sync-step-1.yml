@@ -9,10 +9,15 @@ jobs:
   create_sync_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - name: Create pull request
+      - name: propen
         uses: thomaseizinger/create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: ${{ github.ref }}
           base: "steps/1-model-tweaks"
-          title: "An automatically created PR!"
+      - name: prmerge
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number:  ${{ steps.propen.outputs.number }}
+          method: merge
