@@ -6,7 +6,7 @@ See original post here: https://www.softwareis.cool/hotchocolate-and-efcore/
 - - - - - 
 Going from a `DbContext` to an API could not be easier with [Hot Chocolate](https://github.com/ChilliCream/hotchocolate). You'll have a simple [GraphQL](https://graphql.org/) endpoint to query (including filtering, paging and sorting) faster than you can say *"representational state transfer"*. Let's start learning by doing!
 
-<sub><sup>*2021, May 19th - Updated to HotChocolate12*</sup></sub>
+<sub><sup>*2022, Sept 15th - Updated to Net6 & HC12.13</sup></sub>
 
 ### Contents
 1. [Requirements](#requirements)
